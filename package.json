@@ -1,0 +1,21 @@
+{
+  "name": "logs-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "predev": "tsc",
+    "dev": "node dist/index"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "rich-domain": "^1.17.1",
+    "ts-logs": "^0.0.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.16",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  }
+}
