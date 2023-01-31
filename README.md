@@ -18,7 +18,7 @@ Testing ts-log lib to manage logs
 - Generate log on file in root folder /logs/domain
 - Show logs on terminal
 
-```json
+```sh
 
 curl --location --request POST 'http://localhost:3000/domain' \
 --header 'Content-Type: application/json' \
@@ -38,7 +38,7 @@ Generate a log from `stackLog` middleware
 - Send log to client (browser)
 - Show log on terminal
 
-```json
+```sh
 
 curl --location --request GET 'http://localhost:3000/fail'
 
@@ -50,7 +50,7 @@ Generate a log from `stackLog` middleware
 
 - Send log to client (browser)
 
-```json
+```sh
 
 curl --location --request GET 'http://localhost:3000/ok'
 
