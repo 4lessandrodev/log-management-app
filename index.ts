@@ -1,5 +1,5 @@
 import express from 'express';
-import { Log, stackLog } from 'ts-logs';
+import { bindLog, stackLog } from 'ts-logs';
 import FindProduct from './use-case/find-product.use-case';
 import Login from './use-case/login.use-case';
 import MainUseCase from './use-case/main.use-case';
@@ -14,12 +14,7 @@ const app = express();
 app.use(express.json());
 
 // bind Global log to request
-app.use((req, res, next) => {
-    const name = req.originalUrl;
-    const uid = req.headers['uid'] as string;
-    req.log = Log.init({ name, uid });
-    next();
-});
+app.use(bindLog());
 
 app.post('/domain', async (req, res) => {
     const log = req.log;
