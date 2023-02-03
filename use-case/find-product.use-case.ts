@@ -7,7 +7,7 @@ export interface Dto {
 
 export class FindProduct implements IUseCase<Dto, Result<void, Steps>>{
     async execute(data: Dto): Promise<Result<void, Steps>> {
-        const isOk = ((Math.random() * 100) > 30);
+        const isOk = ((Math.random() * 100) > 20);
 
         if (isOk) return Ok(null);
 
