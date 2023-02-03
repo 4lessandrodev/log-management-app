@@ -448,10 +448,10 @@ toidentifier@1.0.1:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
-ts-logs@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/ts-logs/-/ts-logs-0.0.4.tgz#e9c9ccde5d796864f7bf0ec1e01c382a1d638939"
-  integrity sha512-ZRlGlyDI73ulwOzfLqCq09/MGrPB793RFm4MztBLGCKXwPVCKmwe85OuZwG+jvML2nb5QfAqYgNbKsXRGT5vlQ==
+ts-logs@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/ts-logs/-/ts-logs-0.0.5.tgz#3968dbbd66afe7036209d0439079c462a801225b"
+  integrity sha512-O7+d+vvC6Dz03v/pUhu4oBR9JvdROV+IJz54J0czSMgtHalRR7Is+cRIJhlAWIk9QIrWijdkFTtJL+v4Im3TIQ==
 
 type-is@~1.6.18:
   version "1.6.18"
