@@ -29,8 +29,8 @@ app.post('/domain', async (req, res): Promise<Response> => {
     const result = await main.execute(req.body);
     if (result.isFail()) {
         req?.log?.addStep(result.error());
-        req?.log?.print(); // show error on terminal
-        req?.log?.writeLocal(); // write local on /logs
+        // req?.log?.print(); // show error on terminal
+        // req?.log?.writeLocal(); // write local on /logs
         return res.status(400).json(req.log);
     }
     return res.status(200).json({ ok: true });

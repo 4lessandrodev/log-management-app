@@ -9,12 +9,12 @@
     "dev": "env-cmd node dist/index"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.264.0",
+    "@aws-sdk/client-s3": "^3.263.0",
     "axios": "^1.3.2",
     "env-cmd": "^10.1.0",
     "express": "^4.18.2",
     "rich-domain": "^1.17.1",
-    "ts-logs": "^0.0.13"
+    "ts-logs": "^0.0.18"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
