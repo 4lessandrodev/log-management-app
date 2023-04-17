@@ -1,9 +1,10 @@
 import express, { Response } from 'express';
-import { autoPublishLog, bindLog, Config, stackLog, Step } from 'ts-logs';
+import { Config, Step } from 'ts-logs';
 import FindProduct from './use-case/find-product.use-case';
 import Login from './use-case/login.use-case';
 import MainUseCase from './use-case/main.use-case';
 import Payment from './use-case/payment.use-case';
+import globalLog from './global-log';
 
 // provide by config for s3
 const bucketName = process.env.Bucket!;
@@ -20,19 +21,21 @@ const app = express();
 app.use(express.json());
 
 // bind Global log to request
-app.use(bindLog());
+// app.use(bindLog());
 
 // automatically publish logs
-app.use(autoPublishLog(config));
+// app.use(autoPublishLog(config));
 
 app.post('/domain', async (req, res): Promise<Response> => {
     const result = await main.execute(req.body);
+    await globalLog.writeLocal();
     if (result.isFail()) {
-        req?.log?.addStep(result.error());
         // req?.log?.print(); // show error on terminal
         // req?.log?.writeLocal(); // write local on /logs
-        return res.status(400).json(req.log);
+        globalLog.clear();
+        return res.status(400);
     }
+    globalLog.clear();
     return res.status(200).json({ ok: true });
 });
 
@@ -101,12 +104,12 @@ app.post('/error', (req, res): never => {
 });
 
 // intercept app error
-app.use(stackLog({
-    print: true,
-    writeLocal: true,
-    encrypt: false,
-    sendAsResponse: true,
-    remove: ["password", "card", "token"]
-}));
+// app.use(stackLog({
+//     print: true,
+//     writeLocal: true,
+//     encrypt: false,
+//     sendAsResponse: true,
+//     remove: ["password", "card", "token"]
+// }));
 
 app.listen(3000, (): void => console.log('running on http://localhost:3000'));

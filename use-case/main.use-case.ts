@@ -1,5 +1,4 @@
 import { IUseCase, Ok, Result } from "rich-domain";
-import { Steps } from "ts-logs";
 import FindProduct from './find-product.use-case';
 import Login from './login.use-case';
 import Payment from "./payment.use-case";
@@ -10,25 +9,21 @@ export interface Dto {
     id: string;
 }
 
-export default class MainUseCase implements IUseCase<Dto, Result<void, Steps>>{
+export default class MainUseCase implements IUseCase<Dto, Result<void>>{
     constructor(
         private readonly login: Login,
         private readonly findProduct: FindProduct,
         private readonly payment: Payment
     ){}
-    async execute(dto: Dto): Promise<Result<void, Steps>> {
+    async execute(dto: Dto): Promise<Result<void>> {
         const { email = 'valid@email.com', password = '12345', id = '1' } = dto;
 
-        const login = await this.login.execute({ email, password });
-        if(login.isFail()) return login;
+        await this.login.execute({ email, password });
 
-        const product = await this.findProduct.execute({ id });
-        if(product.isFail()) return product;
+        await this.findProduct.execute({ id });
 
-        const payment = await this.payment.execute({ user: { email, password }, product:{ id}});
-        if(payment.isFail()) return payment;
+        await this.payment.execute({ user: { email, password }, product:{ id}});
 
         return Ok(null);
     }
 }
-
